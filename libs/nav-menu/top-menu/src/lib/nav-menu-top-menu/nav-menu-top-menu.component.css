@@ -1,0 +1,27 @@
+nav {
+    height: 100%;
+    width: 100vw;
+  }
+  
+  .side-nav-button{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:1.5rem;
+      cursor:pointer;
+  }
+  
+  .side-nav-button:hover{
+      background-color:blueviolet;
+      border-radius:30%
+  }
+  mono-repo-nav-menu-top-menu {
+    overflow-x: auto; /* or overflow-x: auto; */
+  
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    height: 4rem;
+    z-index: 2;
+  }
+ 

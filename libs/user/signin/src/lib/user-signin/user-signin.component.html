@@ -1,0 +1,79 @@
+<mono-repo-nav-menu-nav-menu></mono-repo-nav-menu-nav-menu>
+<body>
+    <form class="border p-3 rounded-3 perfect-centering" [formGroup]="loginfrm" (ngSubmit)="loginSubmit()">
+        <div class="row g-0">
+            <div class="col text-center p-2 mb-3 bg-secondary">
+                <span class="fs-3 ">Login</span>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col mb-3">
+                <label for="email" class="form=label">Email Address</label>
+                <mat-form-field class="input-group">
+                    <input matInput type="email" formControlName="email"/>
+                </mat-form-field>
+
+              <div class="form-text text-danger" *ngIf="email?.errors?.['required'] && (email?.dirty || email?.touched)">
+                    Invalid Email
+              </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col mb-3">
+                <label for="pwd" class="form=label">Password</label>
+                <mat-form-field class="input-group">
+                    <input matInput [type]="hide? 'password':'text'"   formControlName="pwd" />
+                    <mat-icon matSuffix (click)="hide=!hide" style="color: black; cursor: pointer" >
+                        {{hide? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+              <div class="form-text text-danger" *ngIf="pwd?.errors?.['required'] && (pwd?.dirty || pwd?.touched)">
+                    Password Required
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col mb-3">
+                <div class="form-inline fr mt-4"><a type="button" id="forgot" data-bs-toggle="modal" data-bs-target="#exampleModal" class="font-weight-bold">Forgot Password ?</a></div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary" [disabled]="loginfrm.invalid">Login </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+<mono-repo-footer></mono-repo-footer>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" area-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title" id="exampleModalLabel">
+                    <span style="font-size:29px; font-weight:700">Forget Password?</span><br />
+                    <small>Please Provide your Email We will Send the Reset Link</small>
+                </p>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group pt-3">
+                    <div class="input-field"><span class="fa fa-user p-2"></span><input type="text" placeholder="Email" [(ngModel)]="resetPassword" (ngModelChange)="checkValidEmail($event)" /></div>
+                </div>
+                <small *ngIf="!resetPassword" class="text-danger">Email is Required</small>
+                <small *ngIf="!isValid && resetPassword" class="text-danger">Email is Invalid</small>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="closebtn" (click)="confirm()" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+</div>

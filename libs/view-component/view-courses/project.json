@@ -1,0 +1,9 @@
+{
+  "name": "view-component-view-courses",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/view-component/view-courses/src",
+  "prefix": "mono-repo",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

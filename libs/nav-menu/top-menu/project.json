@@ -1,0 +1,9 @@
+{
+  "name": "nav-menu-top-menu",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/nav-menu/top-menu/src",
+  "prefix": "mono-repo",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

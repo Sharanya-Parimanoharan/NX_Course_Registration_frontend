@@ -1,0 +1,9 @@
+{
+  "name": "registered-registered",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/registered/registered/src",
+  "prefix": "mono-repo",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

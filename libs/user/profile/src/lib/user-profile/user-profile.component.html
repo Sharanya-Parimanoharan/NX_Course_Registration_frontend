@@ -1,0 +1,142 @@
+<div class="container-fluid g-0">
+    <mono-repo-nav-menu-top-menu (sideNavToggled)="sideNavStatus= $event;" ></mono-repo-nav-menu-top-menu>
+       
+    <main>
+        <mono-repo-nav-menu-side-nav-menu [sideNavStatus]="sideNavStatus" [ngClass]="{'mono-repo-nav-menu-side-nav-menu -open':sideNavStatus}"></mono-repo-nav-menu-side-nav-menu>
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+<body class="prf">
+
+    <mat-stepper #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+
+                <ng-template matStepLabel>Personal Details</ng-template>
+                <div class="row ">
+                    <div class="col frm">
+                        <mat-form-field [style.width.px]=250>
+                            <mat-label>First Name</mat-label>
+                            <input matInput [(ngModel)]="obj.firstname" formControlName="firstname" required>
+                        </mat-form-field>
+                        <div class="form-text text-danger" *ngIf="firstname?.errors?.['pattern'] && (firstname?.touched || firstname?.dirty)">
+                            First Name should contain only alphabets
+                        </div>
+                    </div>
+                    <div class="col frm">
+
+                        <mat-form-field [style.width.px]=300>
+                            <mat-label>Last Name</mat-label>
+                            <input matInput placeholder="Last name" [(ngModel)]="obj.lastname" formControlName="lastname" required>
+                        </mat-form-field>
+                        <div class="form-text text-danger" *ngIf="lastname?.errors?.['pattern'] && (lastname?.touched || lastname?.dirty)">
+                            Last Name should contain only alphabets
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field [style.width.px]=250>
+                            <mat-label>National ID</mat-label>
+                            <input matInput placeholder="NIC" [(ngModel)]="obj.id" formControlName="nic" required readonly>
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field [style.width.px]=300>
+                            <mat-label>Email Address</mat-label>
+                            <input matInput placeholder="Email" formControlName="email" [(ngModel)]="obj.email" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col">
+                        <mat-form-field [style.width.px]=400>
+                            <mat-label>Mobile Number</mat-label>
+                            <input matInput placeholder="mobile" formControlName="mobile" [(ngModel)]="obj.mobile" required>
+                        </mat-form-field>
+                        <div class="form-text text-danger" *ngIf="mobile?.errors?.['pattern']  && (mobile?.touched || mobile?.dirty)">
+                            Invalid Mobile Number-Should contain only numbers
+                        </div>
+                        <div class="form-text text-danger" *ngIf="mobile?.errors?.['minlength'] && (mobile?.touched || mobile?.dirty)">
+                            Mobile Number is too short
+                        </div>
+                        <div class="form-text text-danger" *ngIf="mobile?.errors?.['maxlength'] && (mobile?.touched || mobile?.dirty)">
+                            Mobile Number is too long
+                        </div>
+                    </div>
+                    <div class="col">
+                        <mat-form-field [style.width.px]=400>
+                            <mat-label>Member Since</mat-label>
+                            <input matInput placeholder="member" formControlName="member" [(ngModel)]="obj.member" readonly>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button mat-button class="btyy" (click)="cancel()">Reset</button>
+                    </div>
+                    <div class="col">
+                        <button mat-button matStepperNext class="bty">Next</button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+
+
+        <mat-step [stepControl]="secondFormGroup" label="Change Password">
+            <form [formGroup]="secondFormGroup">
+                <div class="row">
+                    <mat-form-field [style.width.%]=50>
+                        <mat-label>New Password</mat-label>
+                        <input matInput formControlName="pwd" placeholder="" [type]="hide? 'password':'text'">
+                        <button mat-icon-button matSuffix (click)="hide=!hide">
+                            <mat-icon>{{hide? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <div class="text-red-400 text-sm" *ngIf="pwd?.dirty">
+
+                        <span class="block" [ngClass]="{'text-primary': pwd?.value?.match('^(?=.*[A-Z])')}">At least uppercase letter.</span>
+
+                        <span class="block" [ngClass]="{'text-primary': pwd?.value?.match('(?=.*[a-z])')}">At least one lowercase letter.</span>
+
+                        <span class="block" [ngClass]="{'text-primary': pwd?.value?.match('(.*[0-9].*)')}">At least one digit.</span>
+
+                        <span class="block" [ngClass]="{'text-primary': pwd?.value?.match('(?=.*[!@#$%^&*])')}">At least one special character.</span>
+
+                        <span class="block" [ngClass]="{'text-primary': pwd?.value?.match('.{8,}')}">At least 8 characters long.</span>
+
+                    </div>
+                </div>
+                <mat-form-field [style.width.%]=50>
+                    <mat-label>Re-Enter New Password</mat-label>
+                    <input matInput placeholder="" [type]="hide? 'password':'text'" formControlName="rpwd">
+                    <button mat-icon-button matSuffix (click)="hide=!hide">
+                        <mat-icon>{{hide? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <div class="form-text text-danger" [ngStyle]="{'display':repeatPass}">
+                    Repeat Password is Invalid
+                </div>
+
+                <div style="padding-top:150px">
+                    <div class="row">
+                        <div class="col">
+                            <button mat-button matStepperPrevious class="btyy">Back</button>
+                        </div>
+                        <div class="col">
+                            <button mat-button matStepperPrevious (click)="close()">Close</button>
+                        </div>
+                        <div class="col">
+                            <button mat-button (click)="RepeatPassCheck()" class="bty" [disabled]="firstFormGroup.invalid">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        
+    </mat-stepper>
+
+</body>

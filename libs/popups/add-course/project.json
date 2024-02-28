@@ -1,0 +1,9 @@
+{
+  "name": "popups-add-course",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/popups/add-course/src",
+  "prefix": "mono-repo",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

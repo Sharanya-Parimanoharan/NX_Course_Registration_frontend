@@ -1,0 +1,144 @@
+
+
+<div class="container-fluid g-0">
+    <mono-repo-nav-menu-top-menu (sideNavToggled)="sideNavStatus= $event;" (searchEvent)="onSearch($event)"></mono-repo-nav-menu-top-menu>
+       
+    <main>
+        <mono-repo-nav-menu-side-nav-menu [sideNavStatus]="sideNavStatus" [ngClass]="{'mono-repo-nav-menu-side-nav-menu-open':sideNavStatus}"></mono-repo-nav-menu-side-nav-menu>
+    
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+    <body>
+
+<table mat-table class="mat-elevation-z8 demo-table" [dataSource]="searchSched">
+
+    <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef>CODE</th>
+        <td mat-cell *matCellDef="let courses">
+            {{courses.schedule.courseId}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="instructor">
+        <th mat-header-cell *matHeaderCellDef>INSTRUCTOR</th>
+        <td mat-cell *matCellDef="let courses">
+                {{courses.schedule.instructor}}
+         </td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="day">
+        <th mat-header-cell *matHeaderCellDef>DAY</th>
+        <td mat-cell *matCellDef="let courses;let i=index">
+            <ul>
+                <li *ngFor="let timeslot of courses.schedule.timeSlots">
+
+                    <div *ngIf="!courses.isEdit">
+
+                        {{timeslot.day}}
+
+                    </div>
+                    <div *ngIf="courses.isEdit">
+
+                        <input matInput [(ngModel)]="timeslot.day" />
+
+                    </div>
+                </li>
+
+            </ul>
+
+        </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="stime">
+        <th mat-header-cell *matHeaderCellDef>START TIME</th>
+        <td mat-cell *matCellDef="let courses;let i=index">
+            <ul>
+                <li *ngFor="let timeslot of courses.schedule.timeSlots">
+
+                    <div *ngIf="!courses.isEdit">
+
+                        {{timeslot.startTIme}}
+
+                    </div>
+                    <div *ngIf="courses.isEdit">
+
+                        <input matInput [(ngModel)]="timeslot.startTIme" />
+
+                    </div>
+                </li>
+
+            </ul>
+        </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="etime">
+        <th mat-header-cell *matHeaderCellDef>END TIME</th>
+        <td mat-cell *matCellDef="let courses;let i=index">
+            <ul>
+                <li *ngFor="let timeslot of courses.schedule.timeSlots">
+
+                    <div *ngIf="!courses.isEdit">
+
+                        {{timeslot.endTIme}}
+
+                    </div>
+                    <div *ngIf="courses.isEdit">
+
+                        <input matInput [(ngModel)]="timeslot.endTIme" />
+
+                    </div>
+                </li>
+
+            </ul>
+
+        </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="max">
+        <th mat-header-cell *matHeaderCellDef>CAPACITY</th>
+        <td mat-cell *matCellDef="let courses;let i=index">
+                {{courses.schedule.maxCapacity}}
+        </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="current">
+        <th mat-header-cell *matHeaderCellDef>ENROLLED</th>
+        <td mat-cell *matCellDef="let courses;let i=index">
+                {{courses.schedule.currentEnrollment}}
+        </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="deadLine">
+        <th mat-header-cell *matHeaderCellDef>DeadLine</th>
+        <td mat-cell *matCellDef="let courses;let i=index">
+                {{courses.schedule.deadLine}}
+          
+        </td>
+    </ng-container>
+
+        <ng-container matColumnDef="Cancel">
+            <th mat-header-cell *matHeaderCellDef>CANCEL</th>
+            <td mat-cell *matCellDef="let courses"><button type="button" (click)="cancel(courses.scheduleId)" class="cancel" >Cancel</button></td>
+
+        </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <ng-container>
+
+    </ng-container>
+
+
+</table>
+
+
+</body>

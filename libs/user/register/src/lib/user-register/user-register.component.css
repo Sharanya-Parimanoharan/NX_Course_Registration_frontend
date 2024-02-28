@@ -1,0 +1,35 @@
+form {
+    width: 500px;
+  }
+ 
+  input.ng-invalid.ng-touched {
+    border: red 1px solid;
+  }
+  .perfect-centering {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  body {
+    background: linear-gradient(-45deg, #000, #111, #222, #333);
+    background-size: 400% 400%;
+    height: 90vh;
+    color: white;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+  
+    50% {
+      background-position: 100% 50%;
+    }
+  
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  

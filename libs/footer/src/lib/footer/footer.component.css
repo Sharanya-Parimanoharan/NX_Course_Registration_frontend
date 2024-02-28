@@ -1,0 +1,30 @@
+
+footer {
+    background-color: #555;
+    color: #bbb;
+    line-height: 1.5;
+  }
+  
+  .subFT {
+    height: 70px;
+    color: #bbb;
+  }
+  
+    .subFT button {
+      background-color: #555;
+      color: #bbb;
+      font-size: 18px;
+      width: auto;
+    }
+  
+    .subFT a {
+      color: #bbb;
+      font-size: 30px;
+    }
+  
+  .ft-legal {
+    height: 100px;
+    background-color: #333;
+    color: #bbb;
+  }
+  

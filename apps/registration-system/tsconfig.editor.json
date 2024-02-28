@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.ts", "../../libs/view-component/service/courses.service.spec.ts", "../../libs/view-component/service/courses.service.ts", "../../libs/user/services/authservice.service.spec.ts", "../../libs/user/services/authservice.service.ts", "../../libs/password-reset/services/reset-password.service.spec.ts", "../../libs/password-reset/services/reset-password.service.ts", "../../libs/password-reset/services/reserPassword.ts", "../../libs/services/auth-guard.guard.spec.ts", "../../libs/services/auth-guard.guard.ts", "../../libs/services/auth-interceptor.service.spec.ts", "../../libs/services/auth-interceptor.service.ts"],
+  "compilerOptions": {
+    "types": ["jest", "node"]
+  }
+}

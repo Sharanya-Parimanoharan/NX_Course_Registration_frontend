@@ -1,0 +1,9 @@
+{
+  "name": "password-reset-password-reset",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/password-reset/password-reset/src",
+  "prefix": "mono-repo",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

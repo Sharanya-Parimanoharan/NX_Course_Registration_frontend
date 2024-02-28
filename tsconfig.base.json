@@ -1,0 +1,49 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mono-repo/footer": ["libs/footer/src/index.ts"],
+      "@mono-repo/nav-menu/nav-menu": ["libs/nav-menu/nav-menu/src/index.ts"],
+      "@mono-repo/nav-menu/side-nav-menu": [
+        "libs/nav-menu/side-nav-menu/src/index.ts"
+      ],
+      "@mono-repo/nav-menu/top-menu": ["libs/nav-menu/top-menu/src/index.ts"],
+      "@mono-repo/password-reset/password-reset": [
+        "libs/password-reset/password-reset/src/index.ts"
+      ],
+      "@mono-repo/popups/add-course": ["libs/popups/add-course/src/index.ts"],
+      "@mono-repo/popups/add-schedule": [
+        "libs/popups/add-schedule/src/index.ts"
+      ],
+      "@mono-repo/registered/admin-registered": [
+        "libs/registered/admin-registered/src/index.ts"
+      ],
+      "@mono-repo/registered/registered": [
+        "libs/registered/registered/src/index.ts"
+      ],
+      "@mono-repo/user/profile": ["libs/user/profile/src/index.ts"],
+      "@mono-repo/user/register": ["libs/user/register/src/index.ts"],
+      "@mono-repo/user/signin": ["libs/user/signin/src/index.ts"],
+      "@mono-repo/view-component/view-courses": [
+        "libs/view-component/view-courses/src/index.ts"
+      ],
+      "@mono-repo/view-component/view-schedules": [
+        "libs/view-component/view-schedules/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
